@@ -57,3 +57,16 @@ django-admin startproject meu_projeto .
 ```bash 
 python manage.py runserver 0.0.0.0:8000
 ```
+
+## Utilize o Makefile para facilitar o desenvolvimento
+### Comandos disponíveis:
+```Makefile
+help:
+	@echo "Comandos disponíveis:"
+	@echo "  make dev     - Criar e rodar o container"
+	@echo "  make stop    - Parar o container"
+	@echo "  make rm      - Remover o container"
+	@echo "  make clean   - Parar e remover o container"
+	@echo "  make fclean  - Parar e remover o container e apagar a imagem"
+
+```
