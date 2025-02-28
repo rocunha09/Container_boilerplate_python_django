@@ -1,0 +1,20 @@
+# Usa uma imagem oficial do Python
+FROM python:3.12
+
+# Define o diretório de trabalho dentro do container
+WORKDIR /app
+
+# Copia o arquivo de dependências
+COPY app_backend/requirements.txt /app/
+
+# Instala dependências (se houver um requirements.txt)
+RUN pip install --no-cache-dir -r requirements.txt || true
+
+# Copiar o código do projeto para dentro do container
+COPY app_backend /app
+
+# Expõe a porta do Django
+EXPOSE 8000
+
+# Mantém o container rodando
+CMD ["tail", "-f", "/dev/null"]
