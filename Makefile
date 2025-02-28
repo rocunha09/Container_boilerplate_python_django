@@ -1,14 +1,16 @@
 # Variáveis
 DOCKERFILE_PATH = infra/dockerfile_backend
-IMAGE_NAME = django-dev
-CONTAINER_NAME = django-container
+IMAGE_NAME = ft_transcendence
+CONTAINER_NAME = app-api
+CPU = 2
+MEM = 512M
 
 # Criar e rodar o container
 dev:
 	@echo "Criando a imagem Docker..."
 	docker build -f $(DOCKERFILE_PATH) -t $(IMAGE_NAME) .
 	@echo "Iniciando o container..."
-	docker run -dit --name $(CONTAINER_NAME) -p 8000:8000 -v $(shell pwd)/app_backend:/app $(IMAGE_NAME)
+	docker run --rm -dit -m $(MEM) --cpus=$(CPU) --name $(CONTAINER_NAME) -p 8000:8000 -v $(shell pwd)/app_backend:/app $(IMAGE_NAME)
 
 # Parar o container
 stop:
